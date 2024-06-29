@@ -1,9 +1,9 @@
 package com.julionborges;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 
+@Entity(name = "question")
 public class Question extends PanacheEntityBase {
 
     @Id
@@ -12,11 +12,17 @@ public class Question extends PanacheEntityBase {
             sequenceName = "question_id_seq",
             allocationSize = 1
     )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "questionSeq")
     private Long id;
+    @Column(name = "question")
     private String question;
+    @Column(name = "correct_answer")
     private String correctAnswer;
+    @Column(name = "wrong_answer1")
     private String wrongAnswer1;
+    @Column(name = "wrong_answer2")
     private String wrongAnswer2;
+    @Column(name = "wrong_answer3")
     private String wrongAnswer3;
 
     public Question() {
