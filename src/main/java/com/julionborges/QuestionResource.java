@@ -1,10 +1,13 @@
 package com.julionborges;
 
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Path("/questions")
+@Path("questions")
+@Produces(MediaType.APPLICATION_JSON)
 public class QuestionResource {
 
     @GET
@@ -19,6 +22,8 @@ public class QuestionResource {
     }
 
     @POST
+    @Transactional
+    @Consumes(MediaType.APPLICATION_JSON)
     public Question addQuestion(Question question) {
         question.setId(null);
         question.persist();
@@ -26,6 +31,8 @@ public class QuestionResource {
     }
 
     @PUT
+    @Transactional
+    @Consumes(MediaType.APPLICATION_JSON)
     public Question updateQuestion(Question question) {
         Question databaseQuestion = Question.<Question>findByIdOptional(question.getId())
                 .orElseThrow(() -> new RuntimeException("Question not found"));
@@ -41,6 +48,7 @@ public class QuestionResource {
     }
 
     @DELETE
+    @Transactional
     public void deleteQuestion(@QueryParam("id") Long id) {
         Question question = Question.<Question>findByIdOptional(id)
                 .orElseThrow(() -> new RuntimeException("Question not found"));
