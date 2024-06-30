@@ -16,3 +16,10 @@ services:
       - POSTGRES_DB=question-bank-db
       - POSTGRES_USER=quarkus
       - POSTGRES_PASSWORD=quarkus
+
+  question-bank-ai:
+    image: julioborges05/question-bank-ai
+    ports:
+      - 8081:8081
+    environment:
+      - QUARKUS_LANGCHAIN4J_OPENAI_API_KEY=${QUARKUS_LANGCHAIN4J_OPENAI_API_KEY}
