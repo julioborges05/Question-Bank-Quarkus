@@ -7,7 +7,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 import java.awt.*;
 import java.util.List;
 
-@RegisterRestClient(baseUri = "http://localhost:8080/questions")
+@RegisterRestClient(baseUri = "http://question-bank-app:8080/questions")
 @Produces(MediaType.APPLICATION_JSON)
 public interface QuestionService {
 

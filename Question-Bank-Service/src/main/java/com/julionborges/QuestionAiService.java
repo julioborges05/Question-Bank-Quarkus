@@ -6,7 +6,7 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-@RegisterRestClient(baseUri = "http://localhost:8081/ai/question")
+@RegisterRestClient(baseUri = "http://question-bank-ai:8081/ai/question")
 @Produces(MediaType.APPLICATION_JSON)
 public interface QuestionAiService {
 
