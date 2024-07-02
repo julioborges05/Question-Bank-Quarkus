@@ -16,9 +16,9 @@ public interface Assistant {
             Answer with a JSON document containing:
             - the 'question' key set to the question about the topic
             - the 'correctAnswer' key set to the correct answer for the question
-            - the 'incorrectAnswer1' key set to the first incorrect response
-            - the 'incorrectAnswer2' key set to the second incorrect response
-            - the 'incorrectAnswer3' key set to the third incorrect response
+            - the 'wrongAnswer1' key set to the first incorrect response
+            - the 'wrongAnswer2' key set to the second incorrect response
+            - the 'wrongAnswer3' key set to the third incorrect response
             
             All fields must have the maximum of 250 characters
 
