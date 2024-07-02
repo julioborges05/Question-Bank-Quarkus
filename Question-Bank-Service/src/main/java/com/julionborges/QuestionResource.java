@@ -1,14 +1,20 @@
 package com.julionborges;
 
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.util.List;
 
 @Path("questions")
 @Produces(MediaType.APPLICATION_JSON)
 public class QuestionResource {
+
+    @Inject
+    @RestClient
+    QuestionAiService questionAiService;
 
     @GET
     public List<Question> getQuestions() {
@@ -28,6 +34,12 @@ public class QuestionResource {
         question.setId(null);
         question.persist();
         return question;
+    }
+
+    @POST
+    @Path("/ai")
+    public Question createQuestionByAi(@QueryParam("topic") String topic, @QueryParam("language") String language) {
+        return questionAiService.createQuestion(topic, language);
     }
 
     @PUT
